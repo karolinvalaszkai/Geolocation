@@ -1,4 +1,4 @@
-var map; 
+var map;
 var zoomRate = 17;
 
 var KTH = {lat: 59.3498092, lng: 18.0684758};
@@ -37,7 +37,7 @@ function ZoomIn(controlDiv, map) {
   // Setup the click event listeners: simply set the map to Chicago.
   controlUI.addEventListener('click', function() {
   	zoomRate = map.getZoom() + 1;
-    initMap(map); 
+    initMap(map);
   });
 
 }
@@ -70,7 +70,7 @@ function ZoomOut(controlDiv, map) {
   // Setup the click event listeners: simply set the map to Chicago.
   controlUI.addEventListener('click', function() {
   	zoomRate = map.getZoom() - 1;
-    initMap(map); 
+    initMap(map);
   });
 
 }
@@ -105,7 +105,7 @@ function PanRight(controlDiv, map) {
   	KTH.lng = KTH.lng+0.002;
   	console.log(KTH.lng,map.getCenter())
 
-    initMap(map) 
+    initMap(map)
   });
 
 }
@@ -141,7 +141,7 @@ function PanLeft(controlDiv, map) {
   	KTH.lng = KTH.lng-0.002;
   	console.log(KTH.lng,map.getCenter())
 
-    initMap(map) 
+    initMap(map)
   });
 
 }
@@ -176,7 +176,7 @@ function PanUp(controlDiv, map) {
   	KTH.lat = KTH.lat+0.001;
   	console.log(KTH.lng,map.getCenter())
 
-    initMap(map) 
+    initMap(map)
   });
 
 }
@@ -211,7 +211,42 @@ function PanDown(controlDiv, map) {
   	KTH.lat = KTH.lat-0.001;
   	console.log(KTH.lng,map.getCenter())
 
-    initMap(map) 
+    initMap(map)
+  });
+
+}
+
+function Fav(controlDiv, map) {
+
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid #fff';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Click to showcase my favourite place!';
+  controlDiv.appendChild(controlUI);
+
+  // Set CSS for the control interior.
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = 'Karro';
+  controlUI.appendChild(controlText);
+
+  // Setup the click event listeners: simply set the map to Chicago.
+  controlUI.addEventListener('click', function() {
+  	KTH.lat = KTH.lat-0.001;
+  	console.log(KTH.lng,map.getCenter())
+
+    initMap(map)
   });
 
 }
@@ -232,6 +267,7 @@ function initMap(map) {
   var PanLeftControl = new PanLeft(leftControlDiv, map);
   var PanUpControl = new PanUp(leftControlDiv, map);
   var PanDownControl = new PanDown(leftControlDiv, map);
+  var Fav
 
 
   leftControlDiv.index = 1;
