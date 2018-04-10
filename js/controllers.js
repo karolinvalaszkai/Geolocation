@@ -224,6 +224,9 @@
     var marker2;
 
     function initMap(map) {
+        var currentZoom;
+
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: KTH,
           zoom: zoomRate,
@@ -327,6 +330,8 @@ function FullScreenButton(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
+        window.scrollTo(0,1);
+
         toggleFullScreen();
       });
 
@@ -336,7 +341,7 @@ function FullScreenButton(controlDiv, map) {
 
        //Kod från Sofia&Hanna för att få bort address bar
         // When ready...
-        //window.addEventListener("load",function() {
+        window.addEventListener("load",function() {
             // Set a timeout...
             // setTimeout(function(){
             //     // Hide the address bar!
@@ -344,7 +349,9 @@ function FullScreenButton(controlDiv, map) {
             //     }, 0);
 
             //toggleFullScreen();
-       // });
+            //window.scrollTo(0,1);
+
+        });
 
 
   var deferredPrompt;
