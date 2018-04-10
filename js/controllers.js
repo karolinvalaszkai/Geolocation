@@ -327,7 +327,10 @@ function FullScreenButton(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
+        window.scrollTo(0,1);
+
         toggleFullScreen();
+
       });
 
     }
@@ -343,7 +346,9 @@ function FullScreenButton(controlDiv, map) {
             //     window.scrollTo(0, 1);
             //     }, 0);
 
-            toggleFullScreen();
+            //toggleFullScreen();
+            window.scrollTo(0,1);
+
         });
 
 
