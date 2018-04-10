@@ -224,6 +224,9 @@
     var marker2;
 
     function initMap(map) {
+        var currentZoom;
+
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: KTH,
           zoom: zoomRate,
@@ -330,7 +333,6 @@ function FullScreenButton(controlDiv, map) {
         window.scrollTo(0,1);
 
         toggleFullScreen();
-
       });
 
     }
