@@ -329,7 +329,7 @@ function FullScreenButton(controlDiv, map) {
       controlUI.addEventListener('click', function() {
         window.scrollTo(0,1);
 
-        //toggleFullScreen();
+        toggleFullScreen();
 
       });
 
