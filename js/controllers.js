@@ -234,7 +234,7 @@ if(navigator.standalone == true) {
 
 
         map = new google.maps.Map(document.getElementById('map'), {
-          center: location,
+          center: KTH,
           zoom: zoomRate,
           zoomControl: false
         });
