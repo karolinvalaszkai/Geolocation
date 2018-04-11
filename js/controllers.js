@@ -8,6 +8,8 @@ jQuery(window).ready(function(){
         });
  
         function initiate_geolocation() {
+                      console.log('Finding location');
+
             navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);
         }
  
