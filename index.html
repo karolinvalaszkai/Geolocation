@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <meta name="theme-color" content="#317EFB"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link rel="apple-touch-icon" sizes="128x128" href="globe.png">
     <link rel="shortcut icon" type="image/x-icon" href="globe.png">
-
 
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -23,35 +21,21 @@
         height: 100%;
         margin: 0;
         padding: 0;
-
       }
     </style>
-
-
-<<<<<<< HEAD
-    <script src="https://code.jquery.com/jquery.js"></script>
-
-
   </head>
   <body>
-    <button id="btnInit" >Find my location</button>
-    <button onclick="centerGeoLocation()" id="centerGeoLocation">Karolin's fav</button>
-    <button onclick="centerGeoLocation()" id="centerGeoLocation">Sabina's fav</button>
 
-=======
-
-  </head>
-  <body>
     <button onclick="centerGeoLocation()" id="centerGeoLocation">Center Map</button>
-    
->>>>>>> 245983e579135b28261df0fbfaadf2386e24f724
-    <!-- Here we place the map -->
-    <div id="map"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-    async defer></script>
-    <script src="js/controllers.js"></script>
+    <div id="map"></div>
+    <script>
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+    <script src="js/new_controllers.js"></script>
 
   </body>
-
 </html>
