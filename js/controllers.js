@@ -8,7 +8,6 @@ jQuery(window).ready(function(){
         });
  
         function initiate_geolocation() {
-                      console.log('Finding location');
 
             navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);
         }
@@ -32,10 +31,10 @@ jQuery(window).ready(function(){
         }
  
         function handle_geolocation_query(position){
-            //alert('Lat: ' + position.coords.latitude +
-                  //' Lon: ' + position.coords.longitude);
-            console.log('Finding location');
-            location = {lat: position.coords.latitude, lng: position.coords.longitude};
+            alert('Lat: ' + position.coords.latitude +
+                  ' Lon: ' + position.coords.longitude);
+            //console.log('Finding location');
+            //location = {lat: position.coords.latitude, lng: position.coords.longitude};
         }
 
   var map;
