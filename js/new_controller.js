@@ -2,17 +2,11 @@
 // prompted by your browser. If you see the error "The Geolocation service
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
-
 var map, infoWindow;
-var zoomRate = 17;
-var KTH = {lat: 59.3498092, lng: 18.0684758};
-var location = KTH;
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: KTH,
-    zoom: zoomRate,
-    zoomControl: false
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 6
   });
   infoWindow = new google.maps.InfoWindow;
 
