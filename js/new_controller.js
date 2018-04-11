@@ -3,16 +3,13 @@
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 var map, infoWindow;
-
-var zoomRate = 17;
 var KTH = {lat: 59.3498092, lng: 18.0684758};
-var location = KTH;
+var zoomRate = 17;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: KTH,
-    zoom: zoomRate,
-    zoomControl: false
+    zoom: zoomRate
   });
   infoWindow = new google.maps.InfoWindow;
 
