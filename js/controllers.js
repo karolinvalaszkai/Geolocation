@@ -32,6 +32,7 @@ jQuery(window).ready(function(){
         function handle_geolocation_query(position){
             //alert('Lat: ' + position.coords.latitude +
                   //' Lon: ' + position.coords.longitude);
+                  console.log('Finding location')
             location = {lat: position.coords.latitude, lng: position.coords.longitude};
         }
 
