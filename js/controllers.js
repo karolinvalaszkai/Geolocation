@@ -1,4 +1,7 @@
-
+if(navigator.standalone == true) {
+  // My app is installed and therefore fullscreen
+  console.log("installed")
+}
 
 
   var map;
@@ -366,6 +369,8 @@ function FullScreenButton(controlDiv, map) {
     return false;
   });
 
+var btnSave =  document.getElementById('centerGeoLocation');
+
 
   btnSave.addEventListener('click', function() {
     if(deferredPrompt !== undefined) {
@@ -390,6 +395,23 @@ function FullScreenButton(controlDiv, map) {
       });
     }
   });
+
+
+//var centerButton =  document.getElementById('centerGeoLocation');
+
+// centerButton.addEventListener('click', function() {
+//         console.log('Center button');
+//         window.scrollTo(0,1);
+
+// });
+
+function centerGeoLocation() {
+  console.log('Center button');
+
+}
+
+
+
   // window.addEventListener('beforeinstallprompt', function(e) {
   //   // beforeinstallprompt Event fired
   //
