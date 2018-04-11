@@ -238,7 +238,7 @@ function Fav(controlDiv, map) {
   controlText.style.lineHeight = '38px';
   controlText.style.paddingLeft = '5px';
   controlText.style.paddingRight = '5px';
-  controlText.innerHTML = 'Karro';
+  controlText.innerHTML = 'Karro-location';
   controlUI.appendChild(controlText);
 
   // Setup the click event listeners: simply set the map to Chicago.
