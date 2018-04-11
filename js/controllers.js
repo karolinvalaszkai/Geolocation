@@ -3,6 +3,7 @@ if(navigator.standalone == true) {
   console.log("installed")
 }
 
+<<<<<<< HEAD
 jQuery(window).ready(function(){
             jQuery("#btnInit").click(initiate_geolocation);
         });
@@ -36,6 +37,9 @@ jQuery(window).ready(function(){
             //console.log('Finding location');
             //location = {lat: position.coords.latitude, lng: position.coords.longitude};
         }
+=======
+
+>>>>>>> 245983e579135b28261df0fbfaadf2386e24f724
 
   var map;
   var zoomRate = 17;
@@ -266,7 +270,7 @@ jQuery(window).ready(function(){
 
 
         map = new google.maps.Map(document.getElementById('map'), {
-          center: location,
+          center: KTH,
           zoom: zoomRate,
           zoomControl: false
         });
