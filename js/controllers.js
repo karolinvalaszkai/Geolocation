@@ -6,30 +6,30 @@ if(navigator.standalone == true) {
 jQuery(window).ready(function(){
             jQuery("#btnInit").click(initiate_geolocation);
         });
- 
+
         function initiate_geolocation() {
 
             navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);
         }
- 
+
         function handle_errors(error)
         {
             switch(error.code)
             {
                 case error.PERMISSION_DENIED: alert("user did not share geolocation data");
                 break;
- 
+
                 case error.POSITION_UNAVAILABLE: alert("could not detect current position");
                 break;
- 
+
                 case error.TIMEOUT: alert("retrieving position timed out");
                 break;
- 
+
                 default: alert("unknown error");
                 break;
             }
         }
- 
+
         function handle_geolocation_query(position){
             alert('Lat: ' + position.coords.latitude +
                   ' Lon: ' + position.coords.longitude);
@@ -287,7 +287,7 @@ jQuery(window).ready(function(){
 
         var rightControlDiv = document.createElement('div');
         var FullScreenControl = new FullScreenButton(rightControlDiv, map);
-        
+
         rightControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(rightControlDiv);
 
@@ -307,8 +307,24 @@ jQuery(window).ready(function(){
             position: {lat: 59.3498092, lng: 18.0684758}
           });
 
+          karro_marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: {lat: 59.340456, lng: 18.041693}
+          });
+
+          sabina_marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: {lat: 60.901422, lng: 16.626785}
+          });
+
             marker1.addListener('click', toggleBounce);
             marker2.addListener('click', toggleBounce);
+            karro_marker.addListener('click', toggleBounce);
+            sabina_marker.addListener('click', toggleBounce);
 
     }
 
@@ -321,9 +337,6 @@ jQuery(window).ready(function(){
             console.log("start bounce animation")
           }
         }
-
-
- 
 
 
   function toggleFullScreen() {
@@ -375,7 +388,7 @@ function FullScreenButton(controlDiv, map) {
 
     }
 
-    
+
 
        //Kod från Sofia&Hanna för att få bort address bar
         // When ready...
