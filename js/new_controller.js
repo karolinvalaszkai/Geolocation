@@ -14,6 +14,7 @@ var currentState = 'CENTER';
 var pos = {lat: 42.3498092, lng: 18.0684758};
 
 
+
 //Center with current location
   // Try HTML5 geolocation.
 
@@ -45,14 +46,30 @@ function initMap() {
     zoom: zoomRate
   });
   infoWindow = new google.maps.InfoWindow;
-  if (currentState == 'SABBE'){
-    console.log('Sabbe???')
-  map.setCenter(SABBE)
-  }
-  
+
+  var marker;
+  marker = new google.maps.Marker({
+              map: map,
+              draggable: false,
+              animation: google.maps.Animation.DROP,
+              position: {lat: 59.349095, lng: 18.069446}
+            });
+
+
+ marker.addListener('click', toggleBounce);
 
 
 }
+
+function toggleBounce() {
+          if (this.getAnimation() !== null) {
+            this.setAnimation(null);
+            console.log("stop bounce animation")
+          } else {
+            this.setAnimation(google.maps.Animation.BOUNCE);
+            console.log("start bounce animation")
+          }
+        }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -85,16 +102,6 @@ function centerLocation(id){
   //initMap();
 
 }
-
-// var marker;
-// marker = new google.maps.Marker({
-//             map: map,
-//             draggable: true,
-//             animation: google.maps.Animation.DROP,
-//             position: map.getCenter()
-//           });
-
-
 
 
 
