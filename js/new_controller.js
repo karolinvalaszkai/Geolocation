@@ -263,15 +263,6 @@ function ZoomIn(controlDiv, map) {
 
 
 
-
-
-
-
-
-
-
-
-
 //Center with current location
   // Try HTML5 geolocation.
 
@@ -282,11 +273,6 @@ function ZoomIn(controlDiv, map) {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
-      //infoWindow.setPosition(pos);
-      //infoWindow.setContent('Location found.');
-      //infoWindow.open(map);
-      //map.setCenter(pos);
       marker.setPosition(pos);
 
     }, function() {
@@ -406,8 +392,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 function centerLocation(id){
-  //loc = {lat: position.coords.latitude, lng: position.coords.longitude};
-  console.log('Center button!',loc,id)
   if (id == 'CENTER'){
     currentState = id;
     map.setCenter(pos)
@@ -426,8 +410,6 @@ function centerLocation(id){
 
   };
   
-  //initMap();
-
 }
 
 
