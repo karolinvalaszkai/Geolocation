@@ -363,11 +363,11 @@ function initMap() {
         leftControlDiv.index = 1;
         map.controls[google.maps.ControlPosition.LEFT_CENTER].push(leftControlDiv);
 
-        //if(navigator.standalone == false) {
+        if(navigator.standalone == false) {
               // My app is installed and therefore fullscreen
               var rightControlDiv = document.createElement('div');
               var FullScreenControl = new FullScreenButton(rightControlDiv, map);
-           // }
+            }
         
 
         rightControlDiv.index = 1;
