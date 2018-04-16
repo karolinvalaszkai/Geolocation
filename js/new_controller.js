@@ -47,12 +47,43 @@ function initMap() {
   });
   infoWindow = new google.maps.InfoWindow;
 
-  var marker;
+  // Create the DIV to hold the control and call the CenterControl()
+        // constructor passing in this DIV.
+        var leftControlDiv = document.createElement('div');
+        var ZoomInControl = new ZoomIn(leftControlDiv, map);
+        var ZoomOutControl = new ZoomOut(leftControlDiv, map);
+        var PanRightControl = new PanRight(leftControlDiv, map);
+        var PanLeftControl = new PanLeft(leftControlDiv, map);
+        var PanUpControl = new PanUp(leftControlDiv, map);
+        var PanDownControl = new PanDown(leftControlDiv, map);
+
+
+        leftControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.LEFT_CENTER].push(leftControlDiv);
+
+        var rightControlDiv = document.createElement('div');
+        var FullScreenControl = new FullScreenButton(rightControlDiv, map);
+
+        rightControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(rightControlDiv);
+
+
+  var KARROmarker;
+  var image = {
+          url: 'globe.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(20, 32),
+          // The origin for this image is (0, 0).
+          //origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          //anchor: new google.maps.Point(0, 32)
+        };
   marker = new google.maps.Marker({
               map: map,
               draggable: false,
               animation: google.maps.Animation.DROP,
-              position: {lat: 59.349095, lng: 18.069446}
+              position: KARRO,
+              icon: {url:'globe.png',scaledSize: new google.maps.Size(50, 50)}
             });
 
 
@@ -105,7 +136,213 @@ function centerLocation(id){
 
 
 
+function ZoomIn(controlDiv, map) {
 
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '+';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        zoomRate = map.getZoom() + 1;
+        initMap(map);
+      });
+
+    }
+
+    function ZoomOut(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '-';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        zoomRate = map.getZoom() - 1;
+        initMap(map);
+      });
+
+    }
+
+    function PanRight(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '>';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        map.setCenter(map.getCenter()+0.002);
+        console.log(KTH.lng,map.getCenter())
+
+        //initMap(map)
+      });
+
+    }
+
+
+
+    function PanLeft(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '<';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        KTH.lng = KTH.lng-0.002;
+        console.log(KTH.lng,map.getCenter())
+
+        initMap(map)
+      });
+
+    }
+
+    function PanUp(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = '^';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        KTH.lat = KTH.lat+0.001;
+        console.log(KTH.lng,map.getCenter())
+
+        initMap(map)
+      });
+
+    }
+
+    function PanDown(controlDiv, map) {
+
+      // Set CSS for the control border.
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = '#fff';
+      controlUI.style.border = '2px solid #fff';
+      controlUI.style.borderRadius = '3px';
+      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.marginBottom = '22px';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Click to zoom!';
+      controlDiv.appendChild(controlUI);
+
+      // Set CSS for the control interior.
+      var controlText = document.createElement('div');
+      controlText.style.color = 'rgb(25,25,25)';
+      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+      controlText.style.fontSize = '16px';
+      controlText.style.lineHeight = '38px';
+      controlText.style.paddingLeft = '5px';
+      controlText.style.paddingRight = '5px';
+      controlText.innerHTML = 'v';
+      controlUI.appendChild(controlText);
+
+      // Setup the click event listeners: simply set the map to Chicago.
+      controlUI.addEventListener('click', function() {
+        KTH.lat = KTH.lat-0.001;
+        console.log(KTH.lng,map.getCenter())
+
+        initMap(map)
+      });
+
+    }
 
 
 
