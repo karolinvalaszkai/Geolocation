@@ -2,6 +2,7 @@
 // prompted by your browser. If you see the error "The Geolocation service
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
+console.log('hej')
 var map, infoWindow;
 var KTH = {lat: 59.3498092, lng: 18.0684758};
 var zoomRate = 17;
