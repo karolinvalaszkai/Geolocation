@@ -5,27 +5,31 @@
 console.log('hej')
 var map, infoWindow;
 var KTH = {lat: 59.3498092, lng: 18.0684758};
+var SABBE = {lat: 57.3498092, lng: 15.0684758};
+var KARRO = {lat: 58.3498092, lng: 18.0684758};
+var loc = KTH;
 var zoomRate = 17;
+var currentState = 'CENTER';
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: KTH,
-    zoom: zoomRate
-  });
-  infoWindow = new google.maps.InfoWindow;
+var pos = {lat: 42.3498092, lng: 18.0684758};
 
+
+//Center with current location
   // Try HTML5 geolocation.
+
+  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
+      pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      console.log(position.coords.latitude);
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
+      //infoWindow.setPosition(pos);
+      //infoWindow.setContent('Location found.');
+      //infoWindow.open(map);
+      //map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -33,6 +37,21 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: loc,
+    zoom: zoomRate
+  });
+  infoWindow = new google.maps.InfoWindow;
+  if (currentState == 'SABBE'){
+    console.log('Sabbe???')
+  map.setCenter(SABBE)
+  }
+  
+
+
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -42,3 +61,52 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+function centerLocation(id){
+  //loc = {lat: position.coords.latitude, lng: position.coords.longitude};
+  console.log('Center button!',loc,id)
+  if (id == 'CENTER'){
+    currentState = id;
+    map.setCenter(pos)
+  };
+  if (id == 'SABBE'){
+    console.log('SABBE');
+    currentState = SABBE;
+    map.setCenter(SABBE)
+    //map.getCenter()
+    console.log(SABBE,currentState)
+  };
+  if (id == 'KARRO'){
+    loc = KARRO;
+    map.setCenter(KARRO)
+    console.log('KARRO');
+
+  };
+  
+  //initMap();
+
+}
+
+// var marker;
+// marker = new google.maps.Marker({
+//             map: map,
+//             draggable: true,
+//             animation: google.maps.Animation.DROP,
+//             position: map.getCenter()
+//           });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

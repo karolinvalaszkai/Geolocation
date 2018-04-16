@@ -25,12 +25,15 @@
     </style>
   </head>
   <body>
+    <h3>Geolocation</h3>
 
-    <button onclick="centerGeoLocation()" id="centerGeoLocation">Center Map</button>
+    <button onclick="centerLocation(id)" id="CENTER">Center Map</button>
+    <button onclick="centerLocation(id)" id="SABBE">SABBE</button>
+    <button onclick="centerLocation(id)" id="KARRO">KARRO</button>
+
 
     <div id="map"></div>
     <script src="js/new_controller.js"></script>
-
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?callback=initMap">
     </script>
