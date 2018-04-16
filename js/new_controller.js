@@ -7,7 +7,6 @@ var map, infoWindow;
 var KTH = {lat: 59.3498092, lng: 18.0684758};
 var SABBE = {lat: 57.3498092, lng: 15.0684758};
 var KARRO = {lat: 58.3498092, lng: 18.0684758};
-var loc = KTH;
 var zoomRate = 17;
 var currentState = 'CENTER';
 
@@ -43,8 +42,8 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        zoomRate = map.getZoom() + 1;
-        initMap(map);
+      map.setZoom(map.getZoom() + 1);
+
       });
 
     }
@@ -76,8 +75,8 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        zoomRate = map.getZoom() - 1;
-        initMap(map);
+      map.setZoom(map.getZoom() - 1);
+
       });
 
     }
@@ -109,10 +108,9 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        KTH.lng = KTH.lng+0.002;
-        console.log(KTH.lng,map.getCenter())
 
-        initMap(map)
+      map.setCenter({lat: map.getCenter().lat(), lng: map.getCenter().lng()+0.002})
+
       });
 
     }
@@ -146,10 +144,8 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        KTH.lng = KTH.lng-0.002;
-        console.log(KTH.lng,map.getCenter())
+      map.setCenter({lat: map.getCenter().lat(), lng: map.getCenter().lng()-0.002})
 
-        initMap(map)
       });
 
     }
@@ -181,10 +177,8 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        KTH.lat = KTH.lat+0.001;
-        console.log(KTH.lng,map.getCenter())
+      map.setCenter({lat: map.getCenter().lat()+0.001, lng: map.getCenter().lng()})
 
-        initMap(map)
       });
 
     }
@@ -216,10 +210,8 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        KTH.lat = KTH.lat-0.001;
-        console.log(KTH.lng,map.getCenter())
+      map.setCenter({lat: map.getCenter().lat()-0.001, lng: map.getCenter().lng()})
 
-        initMap(map)
       });
 
     }
@@ -288,7 +280,7 @@ function ZoomIn(controlDiv, map) {
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: loc,
+    center: KTH,
     zoom: zoomRate,
     zoomControl: false
 
