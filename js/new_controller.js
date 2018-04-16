@@ -13,6 +13,7 @@ var currentState = 'CENTER';
 
 var pos = {lat: 42.3498092, lng: 18.0684758};
 
+  var marker;
 
 
 //Center with current location
@@ -25,12 +26,13 @@ var pos = {lat: 42.3498092, lng: 18.0684758};
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log(position.coords.latitude);
 
       //infoWindow.setPosition(pos);
       //infoWindow.setContent('Location found.');
       //infoWindow.open(map);
       //map.setCenter(pos);
+      marker.setPosition(pos);
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -39,35 +41,65 @@ var pos = {lat: 42.3498092, lng: 18.0684758};
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
+  
+
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: loc,
     zoom: zoomRate
   });
-  infoWindow = new google.maps.InfoWindow;
+   infowindow = new google.maps.InfoWindow({
+          content: "Hey! This is my place."
+        });
 
+
+   // Creating the marker for KARRO
   var KARROmarker;
-  var image = {
-          url: 'globe.png',
-          // This marker is 20 pixels wide by 32 pixels high.
-          size: new google.maps.Size(20, 32),
-          // The origin for this image is (0, 0).
-          //origin: new google.maps.Point(0, 0),
-          // The anchor for this image is the base of the flagpole at (0, 32).
-          //anchor: new google.maps.Point(0, 32)
-        };
-  marker = new google.maps.Marker({
+  KARROmarker = new google.maps.Marker({
               map: map,
               draggable: false,
               animation: google.maps.Animation.DROP,
               position: KARRO,
-              icon: {url:'globe.png',scaledSize: new google.maps.Size(50, 50)}
+              icon: {url:'KARROrabbit.png',scaledSize: new google.maps.Size(60, 75)},
+              title: "KARRO's place"
             });
 
 
- marker.addListener('click', toggleBounce);
+  KARROmarker.addListener('click', toggleBounce);
+  KARROmarker.addListener('click', function() {
+            infowindow.open(map, KARROmarker);
+          });
 
+  // Creating the marker for SABBE
+  var SABBEmarker;
+  SABBEmarker = new google.maps.Marker({
+              map: map,
+              draggable: false,
+              animation: google.maps.Animation.DROP,
+              position: SABBE,
+              icon: {url:'SABBErabbit.png',scaledSize: new google.maps.Size(60, 70)},
+              title: "SABBE's place"
+            });
+
+
+  SABBEmarker.addListener('click', toggleBounce);
+  SABBEmarker.addListener('click', function() {
+            infowindow.open(map, SABBEmarker);
+          });
+
+  // Creating the marker for Finding destination
+      marker = new google.maps.Marker({
+              map: map,
+              draggable: false,
+              animation: google.maps.Animation.DROP,
+              //position: pos,
+              icon: {url:'target.png',scaledSize: new google.maps.Size(50, 50)},
+              title: "Your location"
+            });
+
+
+  marker.addListener('click', toggleBounce);
 
 }
 
