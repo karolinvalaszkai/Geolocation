@@ -423,8 +423,43 @@ function toggleFullScreen() {
   }
 
 
+console.log(window.find("#splashScreen"))
+//var welcomeView= new index($("#splashScreen"));
+
+window.onload = function(){splashScreen()};
+
+function splashScreen(){
+  console.log('Loading')
 
 
+}
+
+// function hideView(id){
+//   console.log('yo')
+//   id.hide()
+
+
+// }
+
+// var mapView = document.getElementById("map");
+//     if (mapView.style.display === "none") {
+//         mapView.style.display = "block";
+//     } else {
+//         mapView.style.display = "none";
+//     }
+
+
+function hideView() {
+    var x = document.getElementById("splashScreen");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    //mapView.fadeIn();
+    //$("id").fadeIn();
+
+}
 
 
 
