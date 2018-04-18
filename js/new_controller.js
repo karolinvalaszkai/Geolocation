@@ -243,7 +243,7 @@ function ZoomIn(controlDiv, map) {
 
       // Setup the click event listeners: simply set the map to Chicago.
       controlUI.addEventListener('click', function() {
-        window.scrollTo(0,1);
+        //window.scrollTo(0,1);
 
         toggleFullScreen();
       });
@@ -385,22 +385,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+
+
 function centerLocation(id){
   if (id == 'CENTER'){
-    currentState = id;
     map.setCenter(pos)
   };
   if (id == 'SABBE'){
-    console.log('SABBE');
-    currentState = SABBE;
     map.setCenter(SABBE)
-    //map.getCenter()
-    console.log(SABBE,currentState)
   };
   if (id == 'KARRO'){
-    loc = KARRO;
-    map.setCenter(KARRO)
-    console.log('KARRO');
+    map.setCenter(KARRO);
 
   };
   
@@ -423,43 +418,43 @@ function toggleFullScreen() {
   }
 
 
-console.log(window.find("#splashScreen"))
+//console.log(window.find("#splashScreen"))
 //var welcomeView= new index($("#splashScreen"));
 
-window.onload = function(){splashScreen()};
+// window.onload = function(){splashScreen()};
 
-function splashScreen(){
-  console.log('Loading')
-
-
-}
-
-// function hideView(id){
-//   console.log('yo')
-//   id.hide()
+// function splashScreen(){
+//   console.log('Loading')
 
 
 // }
 
-// var mapView = document.getElementById("map");
-//     if (mapView.style.display === "none") {
-//         mapView.style.display = "block";
+// // function hideView(id){
+// //   console.log('yo')
+// //   id.hide()
+
+
+// // }
+
+// // var mapView = document.getElementById("map");
+// //     if (mapView.style.display === "none") {
+// //         mapView.style.display = "block";
+// //     } else {
+// //         mapView.style.display = "none";
+// //     }
+
+
+// function hideView() {
+//     var x = document.getElementById("splashScreen");
+//     if (x.style.display === "none") {
+//         x.style.display = "block";
 //     } else {
-//         mapView.style.display = "none";
+//         x.style.display = "none";
 //     }
+//     //mapView.fadeIn();
+//     //$("id").fadeIn();
 
-
-function hideView() {
-    var x = document.getElementById("splashScreen");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-    //mapView.fadeIn();
-    //$("id").fadeIn();
-
-}
+// }
 
 
 
